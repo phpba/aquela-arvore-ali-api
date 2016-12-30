@@ -1,5 +1,12 @@
 # Aquela Árvore Ali
 
+**Esse projeto foi feito pela comunidade e para a comunidade**
+
+**Utilizaremos, preferencialmente, ferramentas PHP para desenvolver e evoluir competências dos membros da comunidade PHPBA**
+
+**Sugestões serão bem vindas!**
+
+
 Esse projeto foi idealizado para mapear as árvores das áreas ocupadas das cidades. Foi inspirado no [Trees Near You](http://www.treesnearyou.com/) que foi lançado para a cidade de Nova York.
 
 O nosso piloto será na cidade de Salvador.
