@@ -15,13 +15,13 @@ $app->group('/specie', function() {
         return $response->write(json_encode($data->to_array()));
     });
     
-    $this->get('/{id:[0-9]+}', function () {
+    $this->get('/{id:[0-9]+}', function (Request $request, Response $response, $args) {
         //TODO: /specie/find
         $data = Specie::find($request->getAttribute('id'));
         return $response->write(json_encode($data->to_array()));
     });
     
-    $this->get('/{id:[0-9]+}/edit', function () {
+    $this->get('/{id:[0-9]+}/edit', function (Request $request, Response $response, $args) {
         //TODO: /specie/edit
         $data = Specie::find($request->getAttribute('id'));
         if(! $data) {
@@ -57,10 +57,29 @@ $app->group('/specie', function() {
         if(! $data->delete()) {
             //TODO: report flash error message
         }
-        return json_encode(TRUE);
+        return $response->write(json_encode(TRUE));
     });
 });
 
 $app->group('/tree', function() {
-
+    //GET /tree/
+    $this->get('/', function(Request $request, Response $response, $args    ) {
+        $data = Tree::find();
+        return $response->write(json_encode($data->to_array()));
+    });
+    //GET /tree/id
+    $this->get('/{id:[0-9]+}', function(Request $request, Response $response, $args    ) {
+        $data = Tree::find($request->getAttribute('id'));
+        return $response->write(json_encode($data->to_array()));
+    });
+    //PUT /tree/id
+    $this->put('/{id:[0-9]+}', function(Request $request, Response $response, $args    ) {
+        $data = Tree::find($request->getAttribute('id'));
+        return $response->write(json_encode($data->to_array()));
+    });
+    //DELETE /tree/id
+    $this->delete('/{id:[0-9]+}', function(Request $request, Response $response, $args    ) {
+        $data = Tree::find($request->getAttribute('id'));
+        return $response->write(json_encode($data->to_array()));
+    });
 });
