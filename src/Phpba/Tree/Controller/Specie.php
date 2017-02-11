@@ -1,9 +1,11 @@
 
 namespace Phpba\Tree\Controller;
 
+use ControllerBase;
+
 use Phpba\Tree\Model\Specie;
 
-class Specie {
+class Specie extends ControllerBase {
 
     public function list() {
         $result = Specie::find('all');
@@ -12,7 +14,8 @@ class Specie {
     
     public function create() {
         $result = Specie::create([
-            'name' => $name
+            'name' => $this->request->getAttribute('name'),
+            'name_popular' => $this->request->getAttribute('name_popular')
         ]);
         
         if(! $result) {
@@ -24,7 +27,10 @@ class Specie {
     
     public function update() {
         $result = Specie::find($this->request->getAttribute('id'))
+
         $result->name = $this->request->getAttribute('name');
+        $result->name_popular = $this->request->getAttribute('name_popular');
+
         if( ! $result->save()) {
             //TODO: report error message flash
         }
