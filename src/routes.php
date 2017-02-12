@@ -64,22 +64,46 @@ $app->group('/specie', function() {
 $app->group('/tree', function() {
     //GET /tree/
     $this->get('/', function(Request $request, Response $response, $args    ) {
-        $data = Tree::find();
+        $data = Tree::find('all');
+        if(! $data) {
+            return $response->write(json_encode(['error' : 'List error message']));
+        }
         return $response->write(json_encode($data->to_array()));
     });
     //GET /tree/id
     $this->get('/{id:[0-9]+}', function(Request $request, Response $response, $args    ) {
         $data = Tree::find($request->getAttribute('id'));
+        if(! $data) {
+            return $response->write(json_encode(['error' : 'Find error message']));
+        }
+        return $response->write(json_encode($data->to_array()));
+    });
+    //POST /tree/
+    $this->post('/', function(Request $request, Response $response, $args    ) {
+        $data =new Tree;
+        $data->specie_id = Specie::find($args['specie'])->id;
+        $data->category_id = Specie::find($args['category'])->id;
+        $data->latitude = $args['latitude'];
+        $data->longitude = $argd['longitude'];
+        if(! $data->save()) {
+            return $response->write(json_encode(['error' : 'Create error message']));
+        }
         return $response->write(json_encode($data->to_array()));
     });
     //PUT /tree/id
     $this->put('/{id:[0-9]+}', function(Request $request, Response $response, $args    ) {
         $data = Tree::find($request->getAttribute('id'));
+        if(! $data) {
+            return $response->write(json_encode(['error' : 'Update error message, Tree not exist']));
+        }
         return $response->write(json_encode($data->to_array()));
     });
     //DELETE /tree/id
     $this->delete('/{id:[0-9]+}', function(Request $request, Response $response, $args    ) {
         $data = Tree::find($request->getAttribute('id'));
+        if(! $data->delete()) {
+            return $response->write(json_encode(['error' : 'Delete error message']));
+        }
         return $response->write(json_encode($data->to_array()));
     });
 });
