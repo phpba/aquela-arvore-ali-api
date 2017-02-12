@@ -1,20 +1,19 @@
 {
-    "name": "slim/slim-skeleton",
-    "description": "A Slim Framework skeleton application for rapid development",
-    "keywords": ["microframework", "rest", "router", "psr7"],
-    "homepage": "http://github.com/slimphp/Slim-Skeleton",
+    "name": "phpba/aquela-arvore-ali-api",
+    "description": "Backend do projeto Aquela Arvore Ali",
+    "keywords": ["slim", "phpba", "projetos"],
+    "homepage": "http://phpba.com.br",
     "license": "MIT",
     "authors": [
         {
-            "name": "Josh Lockhart",
-            "email": "info@joshlockhart.com",
-            "homepage": "http://www.joshlockhart.com/"
+            "name": "Felipe Bastos",
+            "email": "felipebastosweb@gmail.com.com",
+            "homepage": "http://medium.com/@felipebastosweb"
         }
     ],
     "require": {
         "php": ">=5.5.0",
         "slim/slim": "^3.1",
-        "slim/php-view": "^2.0",
         "monolog/monolog": "^1.17"
     },
     "require-dev": {
